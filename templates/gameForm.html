@@ -1,0 +1,33 @@
+<form id="gameForm">
+    <label for="name">Nome do Jogo:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="platform">Plataforma:</label>
+    <select id="platform" name="platform" required>
+      <option value="">Selecione</option>
+      <option value="PC">PC</option>
+      <option value="PS5">PS5</option>
+      <option value="Xbox">Xbox</option>
+      <option value="Switch">Switch</option>
+      <option value="Mobile">Mobile</option>
+    </select>
+
+    <label for="status">Status:</label>
+    <select id="status" name="status" required>
+      <option value="">Selecione</option>
+      <option value="Jogando">Jogando</option>
+      <option value="Zerado">Zerado</option>
+      <option value="Backlog">Backlog</option>
+    </select>
+
+    <button type="submit">Adicionar Jogo</button>
+</form>
+<script>
+    const form = document.getElementById('gameForm');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      form.reset();
+    });
+
+</script>
