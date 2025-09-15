@@ -20,13 +20,24 @@
       <option value="Backlog">Backlog</option>
     </select>
 
-    <button type="submit">Adicionar Jogo</button>
+
+    <label for="gameRating">Nota:</label>
+    <div id="gameRating" class="star-rating">
+        <input type="radio" id="star5" name="ratingStars" value="5" required><label for="star5">★</label>
+        <input type="radio" id="star4" name="ratingStars" value="4"><label for="star4">★</label>
+        <input type="radio" id="star3" name="ratingStars" value="3"><label for="star3">★</label>
+        <input type="radio" id="star2" name="ratingStars" value="2"><label for="star2">★</label>
+        <input type="radio" id="star1" name="ratingStars" value="1"><label for="star1">★</label>
+    </div>
+
+    <button type="submit">Salvar Jogo</button>
 </form>
 <script>
     const form = document.getElementById('gameForm');
 
     form.addEventListener('submit', function(e) {
       e.preventDefault();
+      saveGame(form)
       form.reset();
     });
 

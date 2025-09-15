@@ -7,13 +7,16 @@
 
   </style>
 <link rel="stylesheet" href="static/css/homePage.css">
+<link rel="stylesheet" href="static/css/gameForm.css">
 </head>
 <body>
 <div class="center-text">
   <h1 id="homePageTitle">Catálogo de Jogos</h1>
 </div>
 
-  <div id="formContainer"></div>
+  <div id="formContainer">
+      {% include "gameForm.html" %}
+  </div>
 
   <table id="gamesTable">
     <thead>
