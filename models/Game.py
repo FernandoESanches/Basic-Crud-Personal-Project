@@ -1,8 +1,8 @@
 class Game:
-    def __init__(self, game_code, name, platform, status, rating):
-        self.gameCode = game_code if game_code else None
-        self.name = name,
-        self.platform = platform,
-        self.status = status,
-        self.rating = rating
+    def __init__(self, gameCode, name, platform, status, score):
+        self.gameCode = gameCode if gameCode else None
+        self.name = name
+        self.platform = platform
+        self.status = status
+        self.score = score
 

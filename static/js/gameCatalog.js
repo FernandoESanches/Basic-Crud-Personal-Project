@@ -1,5 +1,6 @@
 function addNewRow (tableId, rowData){
-    const name = rowData.name;
+    const table = document.getElementById(tableId)
+    const name = rowData.gameName;
     const platform = rowData.platform;
     const status = rowData.status;
 
@@ -10,14 +11,14 @@ function addNewRow (tableId, rowData){
         <td>${status}</td>
     `;
 
-    tableId.appendChild(newRow);
+    table.appendChild(newRow);
 }
 
 async function saveGame(gameForm){
     payload = {"gameName": gameForm.name.value,
                "platform": gameForm.platform.value,
                "status": gameForm.status.value,
-               "rating": gameForm.ratingStars.value
+               "score": gameForm.ratingStars.value
               }
 
     try {
@@ -28,6 +29,13 @@ async function saveGame(gameForm){
             },
             body: JSON.stringify(payload)
         })
+
+        if (!response.ok) {
+            return console.error("Erro ao salvar o game:", response.statusText);
+        }
+
+        addNewRow('gamesTable', payload); // chama a função que insere a linha
+
     } catch (e){
         console.log(e)
     }
