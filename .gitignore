@@ -53,4 +53,10 @@ docs/_build/
 .idea/
 *.swp
 
-db/password.txt
+# --- Docker ---
+# Volumes locais e dados persistentes
+db-data/
+*.pid
+
+# Secrets directory
+secrets/
