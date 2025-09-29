@@ -5,20 +5,18 @@ class GameRepository:
     def __init__(self, db):
         self.db = db
 
-    def insert(self, game: Game):
-        self.db.execute_query(
+    def insert_game(self, game: Game):
+        result = self.db.execute_query_and_fetch(
             INSERT_GAME,
             {
                 "name": game.name,
                 "user": "harcoded lol",
                 "score": game.score,
-                "platform": game.platform,
-                "status": game.status,
+                "platform_id": game.platform,
+                "status_id": game.status,
             }
         )
-
-        result = self.db.fetch_query("SELECT LAST_INSERT_ID() as id")
-        return result[0]["id"]
+        return result[0]
 
     def list_all(self):
         return self.db.fetch_query(SELECT_ALL_GAMES)

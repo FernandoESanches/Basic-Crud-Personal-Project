@@ -18,7 +18,7 @@ class GameManager:
         if errors:
             return {"error": "Validation failed", "details": errors}, 400
 
-        game_id = self.repo.insert(game)
+        game_id = self.repo.insert_game(game)
         return {"message": "Game created", "id": game_id}, 201
 
     def get_all_games(self):

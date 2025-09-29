@@ -1,5 +1,7 @@
 INSERT_GAME = """
-        insert into games (gameName, creationUser, updateDate, updateUser, platform_id, status_id, gameScore) values (:name, :user, null, null, :platform_id, :status_id, :score))
+        insert into games (gameName, creationUser, updateDate, updateUser, platformCode, statusCode, rating) 
+        values (:name, :user, null, null, :platform_id, :status_id, :score)
+        RETURNING gameCode
     """
 
 SELECT_ALL_GAMES = """

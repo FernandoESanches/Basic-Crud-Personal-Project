@@ -14,6 +14,16 @@ class DataBase:
         except SQLAlchemyError as e:
             print(f"Execution Error: {e}")
 
+    def execute_query_and_fetch(self, query, params=None):
+        """Executes INSERT, UPDATE, DELETE statements, returning the affected ID."""
+        try:
+            with self.engine.connect() as conn:
+                insert = conn.execute(text(query), params or {})
+                conn.commit()
+                return insert.fetchone()
+        except SQLAlchemyError as e:
+            print(f"Execution Error: {e}")
+
     def fetch_query(self, query, params=None):
         """Executes SELECT statements and returns results as list of dicts."""
         try:
