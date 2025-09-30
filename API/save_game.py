@@ -13,10 +13,18 @@ def saveGame():
     game = Game(
         gameCode=None,
         name = data['gameName'],
-        platform = data['platform'],
+        platform = data['platform_id'],
         score = data['score'],
-        status = data['status']
+        status = data['status_id']
     )
 
     resp, status = game_manager.create_game(game)
+    return jsonify(resp), status
+
+@save_bp.route("/games", methods=["GET"])
+def getGame():
+    db = current_app.config["db"]
+    game_manager = GameManager(db)
+
+    resp, status = game_manager.get_all_games()
     return jsonify(resp), status

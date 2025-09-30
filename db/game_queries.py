@@ -5,9 +5,8 @@ INSERT_GAME = """
     """
 
 SELECT_ALL_GAMES = """
-    SELECT gameCode, gameName, score
-    FROM games
-    ORDER BY score DESC
+    select * from vw_games
+    order by rating desc
 """
 
 DELETE_GAME = """
@@ -15,9 +14,5 @@ DELETE_GAME = """
 """
 
 UPDATE_GAME_SCORE = """
-    UPDATE games set score = :score WHERE gameCode = :gameCode
-"""
-
-GAME_TABLE = """
-    select * from vw_games
+    UPDATE games set rating = :score WHERE gameCode = :gameCode
 """
