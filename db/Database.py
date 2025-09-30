@@ -12,7 +12,7 @@ class DataBase:
                 conn.execute(text(query), params or {})
                 conn.commit()
         except SQLAlchemyError as e:
-            print(f"Execution Error: {e}")
+            raise Exception(f"Execution Error: {e}")
 
     def execute_query_and_fetch(self, query, params=None):
         """Executes INSERT, UPDATE, DELETE statements, returning the affected ID."""
@@ -22,7 +22,7 @@ class DataBase:
                 conn.commit()
                 return insert.fetchone()
         except SQLAlchemyError as e:
-            print(f"Execution Error: {e}")
+            raise Exception(f"Execution Error: {e}")
 
     def fetch_query(self, query, params=None):
         """Executes SELECT statements and returns results as list of dicts."""
@@ -32,5 +32,4 @@ class DataBase:
                 rows = result.fetchall()
                 return [dict(row._mapping) for row in rows]
         except SQLAlchemyError as e:
-            print(f"Fetch Error: {e}")
-            return []
+            raise Exception(f"Fetch Error: {e}")
